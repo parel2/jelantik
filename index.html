@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelantik Coffee - Portfolio Restoran</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-brown: #8B4513;
+            --dark-brown: #654321;
+            --light-brown: #D2B48C;
+            --cream: #F5F5DC;
+            --warm-orange: #CD853F;
+            --text-dark: #2C1810;
+            --text-light: #666;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--cream);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--warm-orange);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://pixabay.com/get/gb4439883aaa283d53409ed4ddf08b48b019c8ce6e2823b25bffb70c844dcc80b362ea6951ee48dad8963b88ed2597881e10dd14b0836b6489bcf6a09d894681c_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--warm-orange);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-brown);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--warm-orange);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            color: var(--primary-brown);
+            border: 2px solid var(--primary-brown);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-brown);
+            color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        /* Menu Section */
+        .menu {
+            background: var(--white);
+        }
+
+        .menu-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .menu-category {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .menu-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary-brown);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-brown);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item h4 {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .menu-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .menu-price {
+            color: var(--warm-orange);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: var(--primary-brown);
+            color: var(--white);
+        }
+
+        .booking .section-title {
+            color: var(--white);
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--light-brown);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--warm-orange);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--cream);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary-brown);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--warm-orange);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            width: 20px;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--cream);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: var(--light-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--light-brown);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--warm-orange);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--warm-orange);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: var(--warm-orange);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-brown);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-filter {
+                justify-content: center;
+            }
+
+            .filter-btn {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--warm-orange);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-to-top:hover {
+            background: var(--primary-brown);
+            transform: translateY(-2px);
+        }
+
+        .scroll-to-top.visible {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Jelantik Coffee</div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <button class="mobile-menu" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Jelantik Coffee</h1>
+            <p>Nikmati pengalaman kopi terbaik dengan suasana yang hangat dan mengundang</p>
+            <a href="#booking" class="btn">Reservasi Sekarang</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">Tentang Kami</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Cerita Jelantik Coffee</h3>
+                    <p>
+                        Jelantik Coffee adalah destinasi kopi premium yang menghadirkan pengalaman kuliner yang tak terlupakan. 
+                        Kami berkomitmen untuk menyajikan kopi berkualitas tinggi dengan suasana yang nyaman dan pelayanan yang ramah.
+                    </p>
+                    <p>
+                        Dengan interior yang elegan dan atmosfer yang hangat, Jelantik Coffee menjadi tempat ideal untuk berbagai acara, 
+                        mulai dari pertemuan bisnis hingga gathering bersama teman dan keluarga.
+                    </p>
+                    <p>
+                        Setiap biji kopi yang kami gunakan dipilih dengan teliti untuk memastikan cita rasa yang sempurna dalam setiap sajian. 
+                        Tim barista berpengalaman kami siap menghadirkan minuman kopi yang sesuai dengan selera Anda.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="https://pixabay.com/get/g198e3d8f872659b80d9bf8495fe14ed97b9eb586ddaa2f5cd4aa3575867c5dbb38618ecfb8d7989aafc13da54ee0de6cdd3202ba305b1edd3ea138ab215ab8a1_1280.jpg" alt="Interior Jelantik Coffee">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">Galeri</h2>
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="interior">Interior</button>
+                <button class="filter-btn" data-filter="events">Acara</button>
+                <button class="filter-btn" data-filter="food">Makanan & Minuman</button>
+                <button class="filter-btn" data-filter="atmosphere">Suasana</button>
+            </div>
+            <div class="gallery-grid">
+                <!-- Interior Photos -->
+                <div class="gallery-item" data-category="interior">
+                    <img src="https://pixabay.com/get/gb4439883aaa283d53409ed4ddf08b48b019c8ce6e2823b25bffb70c844dcc80b362ea6951ee48dad8963b88ed2597881e10dd14b0836b6489bcf6a09d894681c_1280.jpg" alt="Interior Jelantik Coffee">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="interior">
+                    <img src="https://pixabay.com/get/g198e3d8f872659b80d9bf8495fe14ed97b9eb586ddaa2f5cd4aa3575867c5dbb38618ecfb8d7989aafc13da54ee0de6cdd3202ba305b1edd3ea138ab215ab8a1_1280.jpg" alt="Area Lounge">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="interior">
+                    <img src="https://pixabay.com/get/g9eed95c84643f6a55d0fb0f150c0de708605d2d710cb0faed17784e34ef5f940e4caf435a0c9e294f4e37f1742144afdd1e3367d419797d9c47e2524177867e7_1280.jpg" alt="Meja Coffee">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="interior">
+                    <img src="https://pixabay.com/get/gb9cebd4aa06f8afc63000b402fb4c29a392427fa3cbefca19a86f8ec3e1f9691bf92658df84e0af85e63c11bae4d27a9908dbd9f8a28e2c74f9b52506e083ba9_1280.jpg" alt="Counter Area">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="interior">
+                    <img src="https://pixabay.com/get/g1396a439c844e0f86438a6da45a203971fc689adec4e7ff54ffc9f8673ceb2f2b8e720f4f87f0d213d68cd70ac437cb1d2da58a0d97370942456d446946eb7be_1280.jpg" alt="Seating Area">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="interior">
+                    <img src="https://pixabay.com/get/gd9daf92c48ef184810ff2ce3918af26295b025ea4fc384488d7da467d42cf04d8e084865e9172db965ed71163df6e69289b89d4dc764b93c6f69e77b024bb960_1280.jpg" alt="Dekorasi Interior">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Events Photos -->
+                <div class="gallery-item" data-category="events">
+                    <img src="https://pixabay.com/get/g5ba843275ace0348d4a2ec9a1a4d3dbb8be0bfac65a56cac32bda50f44b62a2cc6b46f1b5d29bde0d786406da4195797b89512cef4fffb888451e75cf2b01802_1280.jpg" alt="Acara Gathering">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="https://pixabay.com/get/g6c743b81d8dc0f9463abb0cac32ae89c4b0906b7e1e685650cc84b0c45cd6c7a6c2b7db6307972d9b0a69b4baaa5d771f3fcfe05b4f545e6eb60bdd81dca640c_1280.jpg" alt="Meeting Business">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="https://pixabay.com/get/g97ff3eaa738b5ef74a198138603ef446ae5bb81d7f8680c382b584f9c406de2a211327f9b4e295d57e33210bf3698b963ca7dbedd41700b420719337595cf4f0_1280.jpg" alt="Acara Komunitas">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="https://pixabay.com/get/g64b3f5338b0ff8f48bad8900d684f035f5a2c1c3d3638897e2a97b404435af9eb4ad9861ac37ffce95afcd25fc240be58156d02956f47723048eee685e24d49f_1280.jpg" alt="Workshop & Seminar">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Food Photos -->
+                <div class="gallery-item" data-category="food">
+                    <img src="https://pixabay.com/get/ge5bdda4fe5d3706cb5102733ea5455379e40ab82eaab988781284afba59259aa06f148f5f543d237e4ae6d0f7c2a19c33c387778afe085e164cc78f5c73a6aa9_1280.jpg" alt="Specialty Coffee">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="food">
+                    <img src="https://pixabay.com/get/g50bc75afa98356b0dc289e2b46009cf0ccfde9558329f41dccf416442f9fc7e7773e67200f574ebbe54b47e62d0037ede3876231d5877a20263de0da2cbd138a_1280.jpg" alt="Pastry & Dessert">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="food">
+                    <img src="https://pixabay.com/get/g97df1b8b98b7e3330ba7afae66940647b19ec93cf19efc3b0d08de0bb87d4a7a4ec9373c9e2c72e181e953276c49901de6b5aadbf6af5daa5598d05108ad74af_1280.jpg" alt="Breakfast Menu">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="food">
+                    <img src="https://pixabay.com/get/g2fe44a72395b105f28c06793d6df0137abe2afe5c283cf741da336ea96c3325f114b37bb986f9fb85201d8d47117921fed0029197514263cd2290655d46bffa3_1280.jpg" alt="Signature Drinks">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Atmosphere Photos -->
+                <div class="gallery-item" data-category="atmosphere">
+                    <img src="https://pixabay.com/get/gede1135cc994cd0a7b2f950f9c899e34c68d9b8ad941f8f36ca7d3964a9200008efde4a0b11dc32b37a231445bffc7b5442a098242e3e300358c6d9021624a99_1280.jpg" alt="Suasana Sore">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="atmosphere">
+                    <img src="https://pixabay.com/get/ge922b217ac91b41ed51218328966bb198c97c50daaf612579fe25733dcb2a685800844268708e7c41cfe20a66dd842673a7c77a0139c1309ad2bcf0369b9d6d5_1280.jpg" alt="Outdoor Seating">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="atmosphere">
+                    <img src="https://pixabay.com/get/g772b6e9ef8647f25175016ca50ad19b01b166e49b6f22d1b6e268a47f6781394de748dddd84fd8a87b9a899ba43bcf5bde65a9dd8a1addc415918fcfa552d400_1280.jpg" alt="Cozy Corner">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="atmosphere">
+                    <img src="https://pixabay.com/get/gd7bf09b6331155ff2aca8b3ceab61e1e9d839cad93ecaa71dd7a2a6567f8b8996018cb4c044fc1990979ff9bcdfeb9372d6ec1bcb48aa08f02014f3634b0d6d6_1280.jpg" alt="Evening Ambiance">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section menu">
+        <div class="container">
+            <h2 class="section-title">Menu Pilihan</h2>
+            <div class="menu-categories">
+                <div class="menu-category">
+                    <h3>Kopi Signature</h3>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Jelantik Blend</h4>
+                            <p>Campuran kopi arabica dan robusta dengan aroma yang khas</p>
+                        </div>
+                        <span class="menu-price">25K</span>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Cappuccino Premium</h4>
+                            <p>Espresso dengan susu steamed dan foam art</p>
+                        </div>
+                        <span class="menu-price">28K</span>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Cold Brew Special</h4>
+                            <p>Kopi seduh dingin dengan ekstraksi 12 jam</p>
+                        </div>
+                        <span class="menu-price">30K</span>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Affogato</h4>
+                            <p>Vanilla ice cream dengan shot espresso</p>
+                        </div>
+                        <span class="menu-price">35K</span>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Makanan</h3>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Croissant Butter</h4>
+                            <p>Pastry renyah dengan butter premium</p>
+                        </div>
+                        <span class="menu-price">22K</span>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Sandwich Club</h4>
+                            <p>Sandwich dengan chicken, bacon, dan sayuran segar</p>
+                        </div>
+                        <span class="menu-price">45K</span>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Pancake Original</h4>
+                            <p>Pancake fluffy dengan maple syrup dan butter</p>
+                        </div>
+                        <span class="menu-price">38K</span>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Salad Caesar</h4>
+                            <p>Salad segar dengan dressing caesar dan crouton</p>
+                        </div>
+                        <span class="menu-price">42K</span>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>Minuman Non-Kopi</h3>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Matcha Latte</h4>
+                            <p>Teh hijau matcha dengan susu hangat</p>
+                        </div>
+                        <span class="menu-price">32K</span>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Chocolate Deluxe</h4>
+                            <p>Hot chocolate dengan whipped cream</p>
+                        </div>
+                        <span class="menu-price">28K</span>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Fresh Juice</h4>
+                            <p>Jus buah segar pilihan (orange, apple, mix)</p>
+                        </div>
+                        <span class="menu-price">25K</span>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Iced Tea Lemon</h4>
+                            <p>Teh dingin dengan perasan lemon segar</p>
+                        </div>
+                        <span class="menu-price">18K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="section booking">
+        <div class="container">
+            <h2 class="section-title">Reservasi Meja</h2>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap *</label>
+                        <input type="text" id="name" name="name" required>
+                        <div class="error-message" id="nameError">Nama lengkap harus diisi</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Nomor Telefon *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <div class="error-message" id="phoneError">Nomor telefon harus diisi</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Tanggal *</label>
+                        <input type="date" id="date" name="date" required>
+                        <div class="error-message" id="dateError">Tanggal harus diisi</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Waktu *</label>
+                        <select id="time" name="time" required>
+                            <option value="">Pilih Waktu</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="21:00">21:00</option>
+                        </select>
+                        <div class="error-message" id="timeError">Waktu harus dipilih</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guests">Jumlah Tamu *</label>
+                        <select id="guests" name="guests" required>
+                            <option value="">Pilih Jumlah</option>
+                            <option value="1">1 Orang</option>
+                            <option value="2">2 Orang</option>
+                            <option value="3">3 Orang</option>
+                            <option value="4">4 Orang</option>
+                            <option value="5">5 Orang</option>
+                            <option value="6">6 Orang</option>
+                            <option value="7">7 Orang</option>
+                            <option value="8">8 Orang</option>
+                            <option value="9">9 Orang</option>
+                            <option value="10">10+ Orang</option>
+                        </select>
+                        <div class="error-message" id="guestsError">Jumlah tamu harus dipilih</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Catatan Tambahan</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="Permintaan khusus, alergi makanan, dll."></textarea>
+                </div>
+                <button type="submit" class="btn">Kirim Reservasi via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jl. Kopi Raya No. 123, Jakarta Selatan, DKI Jakarta</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+62 821 4554 5119</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@jelantikcoffee.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Senin - Minggu: 08:00 - 22:00</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp: +62 821 4554 5119</span>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Nama</label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject">Subjek</label>
+                            <input type="text" id="contactSubject" name="contactSubject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Pesan</label>
+                            <textarea id="contactMessage" name="contactMessage" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Jelantik Coffee</h3>
+                    <p>Tempat terbaik untuk menikmati kopi berkualitas dengan suasana yang hangat dan mengundang.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Jam Operasional</h3>
+                    <ul>
+                        <li>Senin - Jumat: 08:00 - 22:00</li>
+                        <li>Sabtu: 08:00 - 23:00</li>
+                        <li>Minggu: 08:00 - 22:00</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Menu Unggulan</h3>
+                    <ul>
+                        <li><a href="#menu">Jelantik Blend</a></li>
+                        <li><a href="#menu">Cappuccino Premium</a></li>
+                        <li><a href="#menu">Cold Brew Special</a></li>
+                        <li><a href="#menu">Affogato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Layanan</h3>
+                    <ul>
+                        <li><a href="#booking">Reservasi Meja</a></li>
+                        <li><a href="#contact">Catering</a></li>
+                        <li><a href="#contact">Event Organizer</a></li>
+                        <li><a href="#contact">Private Dining</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--primary-brown); padding-top: 1rem; margin-top: 2rem;">
+                <p>&copy; 2025 Jelantik Coffee. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img src="" alt="" id="lightboxImage">
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+
+        // Gallery filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        // Booking form validation and WhatsApp integration
+        const bookingForm = document.getElementById('bookingForm');
+        const adminPhoneNumber = '6282145545119'; // WhatsApp admin number
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(bookingForm);
+            const name = formData.get('name').trim();
+            const phone = formData.get('phone').trim();
+            const date = formData.get('date');
+            const time = formData.get('time');
+            const guests = formData.get('guests');
+            const email = formData.get('email').trim();
+            const notes = formData.get('notes').trim();
+
+            // Validate form
+            let isValid = true;
+            const errors = {
+                name: document.getElementById('nameError'),
+                phone: document.getElementById('phoneError'),
+                date: document.getElementById('dateError'),
+                time: document.getElementById('timeError'),
+                guests: document.getElementById('guestsError')
+            };
+
+            // Hide all errors first
+            Object.values(errors).forEach(error => {
+                error.style.display = 'none';
+            });
+
+            // Validate required fields
+            if (!name) {
+                errors.name.style.display = 'block';
+                isValid = false;
+            }
+            if (!phone) {
+                errors.phone.style.display = 'block';
+                isValid = false;
+            }
+            if (!date) {
+                errors.date.style.display = 'block';
+                isValid = false;
+            }
+            if (!time) {
+                errors.time.style.display = 'block';
+                isValid = false;
+            }
+            if (!guests) {
+                errors.guests.style.display = 'block';
+                isValid = false;
+            }
+
+            // Check if date is not in the past
+            const selectedDate = new Date(date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (selectedDate < today) {
+                errors.date.textContent = 'Tanggal tidak boleh di masa lalu';
+                errors.date.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            // Format date for display
+            const dateObj = new Date(date);
+            const formattedDate = dateObj.toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Create WhatsApp message
+            let message = `*RESERVASI MEJA - JELANTIK COFFEE*\n\n`;
+            message += `Nama: ${name}\n`;
+            message += `Telefon: ${phone}\n`;
+            message += `Tanggal: ${formattedDate}\n`;
+            message += `Waktu: ${time}\n`;
+            message += `Jumlah Tamu: ${guests} orang\n`;
+            
+            if (email) {
+                message += `Email: ${email}\n`;
+            }
+            
+            if (notes) {
+                message += `Catatan: ${notes}\n`;
+            }
+            
+            message += `\nMohon konfirmasi ketersediaan meja. Terima kasih!`;
+
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            bookingForm.reset();
+            
+            // Show success message
+            alert('Reservasi berhasil dikirim! Anda akan diarahkan ke WhatsApp untuk konfirmasi.');
+        });
+
+        // Contact form functionality
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const name = formData.get('contactName');
+            const email = formData.get('contactEmail');
+            const subject = formData.get('contactSubject');
+            const message = formData.get('contactMessage');
+
+            // Create WhatsApp message for contact
+            let whatsappMessage = `*PESAN DARI WEBSITE - JELANTIK COFFEE*\n\n`;
+            whatsappMessage += `Nama: ${name}\n`;
+            whatsappMessage += `Email: ${email}\n`;
+            whatsappMessage += `Subjek: ${subject}\n`;
+            whatsappMessage += `Pesan: ${message}\n\n`;
+            whatsappMessage += `Mohon ditindaklanjuti. Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappURL = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+            contactForm.reset();
+            alert('Pesan berhasil dikirim! Anda akan diarahkan ke WhatsApp.');
+        });
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Set minimum date for booking to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // Update copyright year
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYear = new Date().getFullYear();
+            document.querySelector('footer p').innerHTML = `&copy; ${currentYear} Jelantik Coffee. All rights reserved.`;
+        });
+    </script>
+</body>
+</html>
