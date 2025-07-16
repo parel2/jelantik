@@ -968,10 +968,6 @@
                         <label for="time">Waktu *</label>
                         <select id="time" name="time" required>
                             <option value="">Pilih Waktu</option>
-                            <option value="08:00">08:00</option>
-                            <option value="09:00">09:00</option>
-                            <option value="10:00">10:00</option>
-                            <option value="11:00">11:00</option>
                             <option value="12:00">12:00</option>
                             <option value="13:00">13:00</option>
                             <option value="14:00">14:00</option>
@@ -982,6 +978,7 @@
                             <option value="19:00">19:00</option>
                             <option value="20:00">20:00</option>
                             <option value="21:00">21:00</option>
+                             <option value="21:00">22:00</option>
                         </select>
                         <div class="error-message" id="timeError">Waktu harus dipilih</div>
                     </div>
@@ -1000,13 +997,9 @@
                             <option value="7">7 Orang</option>
                             <option value="8">8 Orang</option>
                             <option value="9">9 Orang</option>
-                            <option value="costum">costum</option>
+                            <option value="costum">jika lebih, sebutkan dicatatan</option>
                         </select>
                         <div class="error-message" id="guestsError">Jumlah tamu harus dipilih</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
                     </div>
                 </div>
                 <div class="form-group">
@@ -1027,47 +1020,23 @@
                     <h3>Informasi Kontak</h3>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Jl.jelantik karangasem</span>
+                        <a href="https://maps.app.goo.gl/3i6bhckWH4w37p8L7"><span >Jl.jelantik karangasem</span></a>
+                        
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+62 821 4554 5119</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>info@jelantikcoffee.com</span>
+                        <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/jelantik_coffee/"><span>jelantik_coffee</span></a>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
-                        <span>Senin - Minggu: 08:00 - 22:00</span>
+                        <span>Senin - Minggu: 12:00 - 23:00</span>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-whatsapp"></i>
-                        <span>WhatsApp: +62 821 4554 5119</span>
+                        <a href="https://wa.me/6282145545119" target="_blank"><span>+62 821 4554 5119</span></a>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3>Kirim Pesan</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="contactName">Nama</label>
-                            <input type="text" id="contactName" name="contactName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contactEmail">Email</label>
-                            <input type="email" id="contactEmail" name="contactEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contactSubject">Subjek</label>
-                            <input type="text" id="contactSubject" name="contactSubject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contactMessage">Pesan</label>
-                            <textarea id="contactMessage" name="contactMessage" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Kirim Pesan</button>
-                    </form>
-                </div>
+    
             </div>
         </div>
     </section>
@@ -1079,19 +1048,11 @@
                 <div class="footer-section">
                     <h3>Jelantik Coffee</h3>
                     <p>Tempat terbaik untuk menikmati kopi berkualitas dengan suasana yang hangat dan mengundang.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="UCKdKm6rIyaVWv-9e-gfwyUg"><i class="fab fa-youtube"></i></a>
-                    </div>
                 </div>
                 <div class="footer-section">
                     <h3>Jam Operasional</h3>
                     <ul>
-                        <li>Senin - Jumat: 08:00 - 22:00</li>
-                        <li>Sabtu: 08:00 - 23:00</li>
-                        <li>Minggu: 08:00 - 22:00</li>
+                 <li>Senin - Minggu: 12:00 - 23:00</li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1233,7 +1194,6 @@
             const date = formData.get('date');
             const time = formData.get('time');
             const guests = formData.get('guests');
-            const email = formData.get('email').trim();
             const notes = formData.get('notes').trim();
 
             // Validate form
