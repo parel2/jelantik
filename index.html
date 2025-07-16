@@ -1265,10 +1265,6 @@
             message += `Waktu: ${time}\n`;
             message += `Jumlah Tamu: ${guests} orang\n`;
             
-            if (email) {
-                message += `Email: ${email}\n`;
-            }
-            
             if (notes) {
                 message += `Catatan: ${notes}\n`;
             }
@@ -1291,32 +1287,7 @@
             alert('Reservasi berhasil dikirim! Anda akan diarahkan ke WhatsApp untuk konfirmasi.');
         });
 
-        // Contact form functionality
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(contactForm);
-            const name = formData.get('contactName');
-            const email = formData.get('contactEmail');
-            const subject = formData.get('contactSubject');
-            const message = formData.get('contactMessage');
-
-            // Create WhatsApp message for contact
-            let whatsappMessage = `*PESAN DARI WEBSITE - JELANTIK COFFEE*\n\n`;
-            whatsappMessage += `Nama: ${name}\n`;
-            whatsappMessage += `Email: ${email}\n`;
-            whatsappMessage += `Subjek: ${subject}\n`;
-            whatsappMessage += `Pesan: ${message}\n\n`;
-            whatsappMessage += `Mohon ditindaklanjuti. Terima kasih!`;
-
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappURL = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
-            
-            window.open(whatsappURL, '_blank');
-            contactForm.reset();
-            alert('Pesan berhasil dikirim! Anda akan diarahkan ke WhatsApp.');
-        });
+      
 
         // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
